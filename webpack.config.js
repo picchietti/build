@@ -6,7 +6,8 @@ const { InjectManifest } = require('workbox-webpack-plugin');
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const copyIfExists = [
-  { from: './src/public/components/app/assets', to: './' }
+  { from: './src/public/components/app/assets', to: './' },
+  { from: './src/public/pages/resource/assets', to: './pages/resource/assets/' }
 ].filter((item) => fs.existsSync(item.from));
 
 const plugins = [
