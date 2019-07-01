@@ -5,7 +5,7 @@
   "scripts": {
     "build": "webpack --config configs/webpack.prod.js",
     "build:dev": "webpack --config configs/webpack.dev.js",
-    "watch": "yarn build:dev --watch",
+    "watch": "yarn build:dev --watch"
   },
   "repository": {
     "type": "git",
