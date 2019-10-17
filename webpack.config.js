@@ -1,4 +1,5 @@
 const fs = require('fs');
+const path = require('path');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -51,6 +52,12 @@ module.exports = {
   output: {
     filename: '[name].js',
     publicPath: '/'
+  },
+  resolve: {
+    alias: {
+      react: path.resolve('./node_modules/react'),
+      'react-dom': path.resolve('./node_modules/react-dom')
+    }
   },
   module: {
     rules: [
