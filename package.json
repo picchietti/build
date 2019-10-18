@@ -40,6 +40,6 @@
     "workbox-webpack-plugin": "^4.3.1"
   },
   "devDependencies": {
-    "yarn": "^1.10.1"
+    "yarn": "^1.17.3"
   }
 }
