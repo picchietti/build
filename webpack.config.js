@@ -7,8 +7,8 @@ const { InjectManifest } = require('workbox-webpack-plugin');
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const copyIfExists = [
-  { from: './src/public/components/app/assets', to: './' },
-  { from: './src/public/pages/resource/assets', to: './pages/resource/assets/' }
+  { from: './src/components/app/assets', to: './' },
+  { from: './src/pages/resource/assets', to: './pages/resource/assets/' }
 ].filter((item) => fs.existsSync(item.from));
 
 const plugins = [
@@ -18,7 +18,7 @@ const plugins = [
 copyIfExists.length > 0 &&
   plugins.push(new CopyWebpackPlugin(copyIfExists));
 
-if (fs.existsSync('./src/public/index.html')) {
+if (fs.existsSync('./src/index.html')) {
   plugins.push(new HtmlWebpackPlugin({
     minify: {
       html5: true,
@@ -32,15 +32,15 @@ if (fs.existsSync('./src/public/index.html')) {
       collapseBooleanAttributes: true
     },
     showErrors: true,
-    template: './src/public/index.html',
+    template: './src/index.html',
     filename: './index.html',
     inject: false
   }));
 }
 
-if (fs.existsSync('./src/public/components/app/assets/service-worker.js')) {
+if (fs.existsSync('./src/components/app/assets/service-worker.js')) {
   plugins.push(new InjectManifest({
-    swSrc: './src/public/components/app/assets/service-worker.js',
+    swSrc: './src/components/app/assets/service-worker.js',
     importWorkboxFrom: 'disabled'
   }));
 }
@@ -52,6 +52,12 @@ module.exports = {
   output: {
     filename: '[name].js',
     publicPath: '/'
+  },
+  devServer: {
+    port: 8080,
+    writeToDisk: true,
+    historyApiFallback: true,
+    serveIndex: false
   },
   resolve: {
     alias: {
